@@ -1,0 +1,13 @@
+{
+	"name": "dcbs/PhauxData",
+	"version": "0.0.1",
+	"autoload": {
+		"psr-0": {"PhauxData\\": "src/"}
+	},
+	"require-dev": {
+		"phpspec/phpspec": "2.0.*@dev"
+	},
+	"config": {
+		"bin-dir": "bin"
+	}
+}
