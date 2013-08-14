@@ -1,8 +1,20 @@
 <?php
-
 namespace PhauxData;
 use \PhauxData\Constraints\Constraint;
 
+/**
+ * The Generator is responsible for creating model instances and applying the
+ * constraints to them.
+ *
+ * PHP version 5
+ *
+ * @category  Testing
+ * @package   PhauxData
+ * @author    David Stelter <david.stelter@gmail.com>
+ * @copyright 2013 David Stelter
+ * @license   http://opensource.org/licenses/MIT The MIT License
+ * @link      http://github.com/davidstelter/PhauxData
+ */
 class Generator {
 
 	/**
@@ -25,7 +37,9 @@ class Generator {
 	private $attributes;
 
 	/**
-	 * @param string $model_name
+	 * Creates and returns an instance of a Generator.
+	 *
+	 * @param string $model_name passed to the created Generator instance
 	 * @return Generator
 	 */
 	public static function create($model_name) {
@@ -33,6 +47,8 @@ class Generator {
 	}
 
 	/**
+	 * Takes a name of a class (model) to generate.
+	 *
 	 * @param string $model_name
 	 */
 	public function __construct($model_name) {
@@ -40,6 +56,8 @@ class Generator {
 	}
 
 	/**
+	 * Returns the name of the model this Generator will produce.
+	 *
 	 * @return string
 	 */
     public function getModelName() {
@@ -47,6 +65,8 @@ class Generator {
     }
 
 	/**
+	 * Set the number of model instances to generate.
+	 *
 	 * @param int $count
 	 */
 	public function setCount($count) {

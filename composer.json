@@ -5,7 +5,10 @@
 		"psr-0": {"PhauxData\\": "src/"}
 	},
 	"require-dev": {
-		"phpspec/phpspec": "2.0.*@dev"
+		"phpspec/phpspec": "2.0.*@dev",
+		"phpdocumentor/phpdocumentor": "dev-develop",
+		"evert/phpdoc-md": "dev-master",
+		"squizlabs/php_codesniffer": "dev-master"
 	},
 	"config": {
 		"bin-dir": "bin"
