@@ -60,9 +60,9 @@ class Generator {
 	 *
 	 * @return string
 	 */
-    public function getModelName() {
+	public function getModelName() {
 		return $this->model_name;
-    }
+	}
 
 	/**
 	 * Set the number of model instances to generate.
