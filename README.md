@@ -1,6 +1,8 @@
 PhauxData
 =========
 
+[![Build Status](https://travis-ci.org/davidstelter/PhauxData.png)](https://travis-ci.org/davidstelter/PhauxData)
+
 Random data generator for PHP
 
 Basic example:
