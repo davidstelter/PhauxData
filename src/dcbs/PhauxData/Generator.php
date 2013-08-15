@@ -1,6 +1,6 @@
 <?php
-namespace PhauxData;
-use \PhauxData\Constraints\Constraint;
+namespace dcbs\PhauxData;
+use dcbs\PhauxData\Constraints\Constraint;
 
 /**
  * The Generator is responsible for creating model instances and applying the

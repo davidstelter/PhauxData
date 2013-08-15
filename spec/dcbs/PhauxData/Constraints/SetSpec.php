@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\PhauxData\Constraints;
+namespace spec\dcbs\PhauxData\Constraints;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -14,7 +14,7 @@ class SetSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('PhauxData\Constraints\Set');
+        $this->shouldHaveType('dcbs\PhauxData\Constraints\Set');
     }
 
 	function it_returns_values_in_set()

@@ -1,6 +1,6 @@
 <?php
 
-namespace PhauxData\Constraints;
+namespace dcbs\PhauxData\Constraints;
 
 abstract class RangeConstraint extends Constraint {
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace PhauxData\Constraints;
+namespace dcbs\PhauxData\Constraints;
 
 class LexicalRange extends Constraint {
 	private $min;

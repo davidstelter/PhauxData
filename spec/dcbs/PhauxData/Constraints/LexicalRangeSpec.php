@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\PhauxData\Constraints;
+namespace spec\dcbs\PhauxData\Constraints;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -14,6 +14,6 @@ class LexicalRangeSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('PhauxData\Constraints\LexicalRange');
+        $this->shouldHaveType('dcbs\PhauxData\Constraints\LexicalRange');
     }
 }

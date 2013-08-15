@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\PhauxData\Constraints;
+namespace spec\dcbs\PhauxData\Constraints;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -15,9 +15,9 @@ class DateRangeSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('PhauxData\Constraints\DateRange');
-        $this->shouldHaveType('PhauxData\Constraints\RangeConstraint');
-        $this->shouldHaveType('PhauxData\Constraints\Constraint');
+        $this->shouldHaveType('dcbs\PhauxData\Constraints\DateRange');
+        $this->shouldHaveType('dcbs\PhauxData\Constraints\RangeConstraint');
+        $this->shouldHaveType('dcbs\PhauxData\Constraints\Constraint');
     }
 
 	function it_returns_min_and_max() {

@@ -1,5 +1,5 @@
 <?php
-namespace PhauxData\Constraints;
+namespace dcbs\PhauxData\Constraints;
 
 /**
  * A Constant constraint will always return the same value.

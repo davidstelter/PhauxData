@@ -12,7 +12,7 @@
  * @link      http://github.com/davidstelter/PhauxData
  */
 
-namespace PhauxData\Constraints;
+namespace dcbs\PhauxData\Constraints;
 
 class Set extends Constraint {
 

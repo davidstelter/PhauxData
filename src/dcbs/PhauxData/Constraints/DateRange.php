@@ -1,5 +1,5 @@
 <?php
-namespace PhauxData\Constraints;
+namespace dcbs\PhauxData\Constraints;
 
 /**
  * A DateRange constraint will return a date between the min and max.

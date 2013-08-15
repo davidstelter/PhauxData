@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\PhauxData\Constraints;
+namespace spec\dcbs\PhauxData\Constraints;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -14,7 +14,7 @@ class ConstantSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('PhauxData\Constraints\Constant');
+        $this->shouldHaveType('dcbs\PhauxData\Constraints\Constant');
     }
 
 	function it_returns_its_value() {

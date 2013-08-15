@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\PhauxData\Constraints;
+namespace spec\dcbs\PhauxData\Constraints;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -13,7 +13,7 @@ class IntRangeSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('PhauxData\Constraints\IntRange');
+        $this->shouldHaveType('dcbs\PhauxData\Constraints\IntRange');
     }
 
 	function it_returns_integers()
