@@ -27,7 +27,6 @@ class Generator {
 	 */
 	private $count;
 
-
 	/**
 	 * @var array $attributes
 	 * array(
@@ -37,12 +36,20 @@ class Generator {
 	private $attributes;
 
 	/**
+	 * @var callable
+	 */
+	private $callback_post_save;
+	private $model_factory;
+
+
+	/**
 	 * Creates and returns an instance of a Generator.
 	 *
 	 * @param string $model_name passed to the created Generator instance
 	 * @return Generator
 	 */
-	public static function create($model_name) {
+	public static function create($model_name)
+	{
 		return new Generator($model_name);
 	}
 
@@ -51,8 +58,26 @@ class Generator {
 	 *
 	 * @param string $model_name
 	 */
-	public function __construct($model_name) {
+	public function __construct($model_name)
+	{
 		$this->model_name = $model_name;
+		$this->model_factory = array($this, 'defaultModelFactory');
+	}
+
+	/**
+	 * The default model factory just returns an instance of the Generator's set model.
+	 */
+	protected function defaultModelFactory($model_name)
+	{
+		return new $model_name;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getModelInstance()
+	{
+		return call_user_func($this->model_factory, $this->model_name);
 	}
 
 	/**
@@ -60,7 +85,8 @@ class Generator {
 	 *
 	 * @return string
 	 */
-	public function getModelName() {
+	public function getModelName()
+	{
 		return $this->model_name;
 	}
 
@@ -69,7 +95,8 @@ class Generator {
 	 *
 	 * @param int $count
 	 */
-	public function setCount($count) {
+	public function setCount($count)
+	{
 		$this->count = $count;
 	}
 
@@ -78,7 +105,8 @@ class Generator {
 	 * @param int $count
 	 * @return Generator
 	 */
-	public function count($count) {
+	public function count($count)
+	{
 		$this->count = $count;
 		return $this;
 	}
@@ -86,7 +114,8 @@ class Generator {
 	/**
 	 * @return int
 	 */
-	public function getCount() {
+	public function getCount()
+	{
 		return $this->count;
 	}
 
@@ -94,7 +123,8 @@ class Generator {
 	 * @param string $name
 	 * @param Constraint $constraints
 	 */
-	public function setAttribute($name, Constraint $constraints) {
+	public function setAttribute($name, Constraint $constraints)
+	{
 		$this->attributes[$name] = $constraints;
 	}
 
@@ -104,20 +134,49 @@ class Generator {
 	 * @param Constraint $constraints
 	 * @return Generator
 	 */
-	public function attribute($name, Constraint $constraints) {
+	public function attribute($name, Constraint $constraints)
+	{
 		$this->setAttribute($name, $constraints);
 		return $this;
 	}
 
 	/**
+	 * Set the post-save callback. This function will be called after the call to save on every
+	 * created model.
+	 *
+	 * @param callable $callback
+	 * @throws InvalidArgumentException if the argument is not callable.
+	 */
+	public function setPostSaveCallback($callback)
+	{
+		if (! is_callable($callback)) {
+			throw new \InvalidArgumentException('Argument must be callable.');
+		}
+
+		$this->callback_post_save = $callback;
+	}
+
+	/**
+	 * @param callable $factory
+	 */
+	public function setModelFactory($callable)
+	{
+		if (! is_null($callable) && ! is_callable($callable)) {
+			throw new \InvalidArgumentException('Argument must be callable.');
+		}
+
+		$this->model_factory = $callable;
+	}
+
+	/**
 	 * Generates the models.
 	 */
-	public function run() {
+	public function run()
+	{
 		$created = 0;
 
 		for ($created = 0; $created < $this->count; ++$created) {
-			$class = $this->model_name;
-			$model = new $class;
+			$model = $this->getModelInstance();
 
 			foreach ($this->attributes as $name => $constraint) {
 				$setter = 'set' . $name;
@@ -125,6 +184,10 @@ class Generator {
 			}
 
 			$model->save();
+
+			if ($this->callback_post_save) {
+				call_user_func($this->callback_post_save, $model, $this);
+			}
 		}
 	}
 }
