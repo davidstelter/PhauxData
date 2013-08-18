@@ -1,6 +1,19 @@
 {
-	"name": "dcbs/PhauxData",
+	"name": "dcbs/phaux-data",
+	"description": "Random model/data generator",
+	"keywords": ["testing"],
+	"homepage": "http://github.com/davidstelter/PhauxData",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "David Stelter",
+			"email": "david.stelter@gmail.com"
+		}
+	],
 	"version": "0.0.1",
+	"require": {
+		"php": ">=5.3.0"
+	},
 	"autoload": {
 		"psr-0": {"dcbs\\": "src/"}
 	},
